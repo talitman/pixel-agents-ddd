@@ -15,7 +15,7 @@ grid in the webview so agents visually live where their work lives.
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Config loader and domain detection utility
+- [x] **Phase 1: Foundation** - Config loader and domain detection utility (completed 2026-03-07)
 - [ ] **Phase 2: Agent Domain Tracking** - Backend state and domain-change events
 - [ ] **Phase 3: Multi-Office UI** - Webview grid of rooms, one per active domain
 
@@ -75,6 +75,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 1/2 | In progress | - |
+| 1. Foundation | 2/2 | Complete   | 2026-03-07 |
 | 2. Agent Domain Tracking | 0/2 | Not started | - |
 | 3. Multi-Office UI | 0/2 | Not started | - |
