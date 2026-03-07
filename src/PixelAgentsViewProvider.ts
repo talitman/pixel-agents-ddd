@@ -23,7 +23,12 @@ import {
   sendFloorTilesToWebview,
   sendWallTilesToWebview,
 } from './assetLoader.js';
-import { GLOBAL_KEY_SOUND_ENABLED, WORKSPACE_KEY_AGENT_SEATS } from './constants.js';
+import { loadConfig } from './configLoader.js';
+import {
+  CONFIG_FILE_NAME,
+  GLOBAL_KEY_SOUND_ENABLED,
+  WORKSPACE_KEY_AGENT_SEATS,
+} from './constants.js';
 import { ensureProjectScan } from './fileWatcher.js';
 import type { LayoutWatcher } from './layoutPersistence.js';
 import { readLayoutFromFile, watchLayoutFile, writeLayoutToFile } from './layoutPersistence.js';
@@ -143,6 +148,21 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
         const projectDir = getProjectDirPath();
         const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
         console.log('[Extension] workspaceRoot:', workspaceRoot);
+        // Load config and set up live-reload watcher
+        if (workspaceRoot) {
+          loadConfig(workspaceRoot);
+          const configWatcher = vscode.workspace.createFileSystemWatcher(
+            new vscode.RelativePattern(workspaceRoot, CONFIG_FILE_NAME),
+          );
+          const reloadConfig = () => {
+            console.log('[Pixel Agents] Config file changed, reloading');
+            loadConfig(workspaceRoot);
+          };
+          configWatcher.onDidChange(reloadConfig);
+          configWatcher.onDidCreate(reloadConfig);
+          configWatcher.onDidDelete(reloadConfig);
+          this.context.subscriptions.push(configWatcher);
+        }
         console.log('[Extension] projectDir:', projectDir);
         if (projectDir) {
           ensureProjectScan(
