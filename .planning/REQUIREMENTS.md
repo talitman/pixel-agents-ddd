@@ -7,17 +7,17 @@
 
 ### Configuration
 
-- [ ] **CFG-01**: Extension reads optional `pixel-agents.config.json` from workspace root
-- [ ] **CFG-02**: Config supports `domainsRoot` field (default: `"packages"`) to specify which folder contains domain subdirectories
-- [ ] **CFG-03**: Config supports `defaultDomain` field (default: `"workspace"`) for files outside the domains root
-- [ ] **CFG-04**: Extension works with zero config — auto-detects `packages/` at workspace root
+- [x] **CFG-01**: Extension reads optional `pixel-agents.config.json` from workspace root
+- [x] **CFG-02**: Config supports `domainsRoot` field (default: `"packages"`) to specify which folder contains domain subdirectories
+- [x] **CFG-03**: Config supports `defaultDomain` field (default: `"workspace"`) for files outside the domains root
+- [x] **CFG-04**: Extension works with zero config — auto-detects `packages/` at workspace root
 
 ### Domain Detection
 
-- [ ] **DOM-01**: `detectDomain(filePath)` returns the domain name for any file path
-- [ ] **DOM-02**: Files inside `<domainsRoot>/<domain>/...` return `<domain>` as their domain
-- [ ] **DOM-03**: Files outside the domains root return the `defaultDomain` value
-- [ ] **DOM-04**: Domain detection is case-preserving (folder name = domain name)
+- [x] **DOM-01**: `detectDomain(filePath)` returns the domain name for any file path
+- [x] **DOM-02**: Files inside `<domainsRoot>/<domain>/...` return `<domain>` as their domain
+- [x] **DOM-03**: Files outside the domains root return the `defaultDomain` value
+- [x] **DOM-04**: Domain detection is case-preserving (folder name = domain name)
 
 ### Agent Domain Tracking
 
@@ -58,14 +58,14 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CFG-01 | Phase 1 | Pending |
-| CFG-02 | Phase 1 | Pending |
-| CFG-03 | Phase 1 | Pending |
-| CFG-04 | Phase 1 | Pending |
-| DOM-01 | Phase 1 | Pending |
-| DOM-02 | Phase 1 | Pending |
-| DOM-03 | Phase 1 | Pending |
-| DOM-04 | Phase 1 | Pending |
+| CFG-01 | Phase 1 | Complete (01-01) |
+| CFG-02 | Phase 1 | Complete (01-01) |
+| CFG-03 | Phase 1 | Complete (01-01) |
+| CFG-04 | Phase 1 | Complete (01-01) |
+| DOM-01 | Phase 1 | Complete (01-01) |
+| DOM-02 | Phase 1 | Complete (01-01) |
+| DOM-03 | Phase 1 | Complete (01-01) |
+| DOM-04 | Phase 1 | Complete (01-01) |
 | AGT-01 | Phase 2 | Pending |
 | AGT-02 | Phase 2 | Pending |
 | AGT-03 | Phase 2 | Pending |
@@ -85,4 +85,4 @@
 
 ---
 *Requirements defined: 2026-03-07*
-*Last updated: 2026-03-07 after roadmap creation*
+*Last updated: 2026-03-07 after 01-01 completion*

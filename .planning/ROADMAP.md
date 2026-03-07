@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Config loader + domain detection (TDD): types/constants, configLoader.ts, full test suite
+- [x] 01-01-PLAN.md — Config loader + domain detection (TDD): types/constants, configLoader.ts, full test suite
 - [ ] 01-02-PLAN.md — Wire configLoader into PixelAgentsViewProvider: loadConfig at webviewReady, live-reload watcher
 
 ### Phase 2: Agent Domain Tracking
@@ -75,6 +75,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Not started | - |
+| 1. Foundation | 1/2 | In progress | - |
 | 2. Agent Domain Tracking | 0/2 | Not started | - |
 | 3. Multi-Office UI | 0/2 | Not started | - |
