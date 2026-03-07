@@ -27,3 +27,14 @@ export interface PersistedAgent {
   /** Workspace folder name (only set for multi-root workspaces) */
   folderName?: string;
 }
+
+export interface PixelAgentsConfig {
+  domainsRoot: string; // e.g. "packages" or "apps"
+  defaultDomain: string; // e.g. "workspace"
+}
+
+export interface ResolvedConfig {
+  domainsRoot: string; // Absolute path to domainsRoot directory
+  domainsRootExists: boolean; // Whether domainsRoot actually exists on disk
+  defaultDomain: string; // Domain name for files outside domainsRoot
+}

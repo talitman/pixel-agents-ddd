@@ -40,3 +40,8 @@ export const WORKSPACE_KEY_AGENTS = 'pixel-agents.agents';
 export const WORKSPACE_KEY_AGENT_SEATS = 'pixel-agents.agentSeats';
 export const WORKSPACE_KEY_LAYOUT = 'pixel-agents.layout';
 export const TERMINAL_NAME_PREFIX = 'Claude Code';
+
+// ── Config Loader ─────────────────────────────────────────────
+export const CONFIG_FILE_NAME = 'pixel-agents.config.json';
+export const DEFAULT_DOMAINS_ROOT = 'packages';
+export const DEFAULT_DOMAIN = 'workspace';
