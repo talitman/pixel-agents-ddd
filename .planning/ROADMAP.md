@@ -30,11 +30,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Extension starts without error in a workspace that has a valid `pixel-agents.config.json` with `domainsRoot` and `defaultDomain`
   3. `detectDomain("packages/api/src/index.ts")` returns `"api"` (case-preserved folder name)
   4. `detectDomain("src/utils/helpers.ts")` (file outside domainsRoot) returns the configured `defaultDomain`
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Config loader — read and validate `pixel-agents.config.json`, export resolved config
-- [ ] 01-02: Domain detection — implement `detectDomain()` using resolved config
+- [ ] 01-01-PLAN.md — Config loader + domain detection (TDD): types/constants, configLoader.ts, full test suite
+- [ ] 01-02-PLAN.md — Wire configLoader into PixelAgentsViewProvider: loadConfig at webviewReady, live-reload watcher
 
 ### Phase 2: Agent Domain Tracking
 **Goal**: Every agent has a current domain that updates as it accesses files, and changes reach the webview
