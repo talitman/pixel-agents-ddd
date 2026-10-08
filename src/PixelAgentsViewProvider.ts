@@ -58,6 +58,9 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
   // Cross-window layout sync
   layoutWatcher: LayoutWatcher | null = null;
 
+  // Config file watcher (guard against duplicate registration on webview reload)
+  configWatcherSetUp = false;
+
   constructor(private readonly context: vscode.ExtensionContext) {}
 
   private get extensionUri(): vscode.Uri {
@@ -151,17 +154,20 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
         // Load config and set up live-reload watcher
         if (workspaceRoot) {
           loadConfig(workspaceRoot);
-          const configWatcher = vscode.workspace.createFileSystemWatcher(
-            new vscode.RelativePattern(workspaceRoot, CONFIG_FILE_NAME),
-          );
-          const reloadConfig = () => {
-            console.log('[Pixel Agents] Config file changed, reloading');
-            loadConfig(workspaceRoot);
-          };
-          configWatcher.onDidChange(reloadConfig);
-          configWatcher.onDidCreate(reloadConfig);
-          configWatcher.onDidDelete(reloadConfig);
-          this.context.subscriptions.push(configWatcher);
+          if (!this.configWatcherSetUp) {
+            this.configWatcherSetUp = true;
+            const configWatcher = vscode.workspace.createFileSystemWatcher(
+              new vscode.RelativePattern(workspaceRoot, CONFIG_FILE_NAME),
+            );
+            const reloadConfig = () => {
+              console.log('[Pixel Agents] Config file changed, reloading');
+              loadConfig(workspaceRoot);
+            };
+            configWatcher.onDidChange(reloadConfig);
+            configWatcher.onDidCreate(reloadConfig);
+            configWatcher.onDidDelete(reloadConfig);
+            this.context.subscriptions.push(configWatcher);
+          }
         }
         console.log('[Extension] projectDir:', projectDir);
         if (projectDir) {
